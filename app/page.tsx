@@ -1,22 +1,18 @@
-"use client";
+import Image from "next/image";
+
 export default function Home() {
   const cardStyle =
-  "rounded-xl border border-slate-200 bg-white p-5 transition-colors duration-200 hover:border-blue-400 hover:bg-blue-50";
+    "min-w-0 rounded-xl border border-slate-200 bg-white p-5";
 
-const buttonStyle =
-  "mt-5 cursor-pointer rounded-lg border border-blue-900 px-4 py-2 text-sm font-semibold text-blue-900 transition-colors duration-200 hover:bg-blue-900 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-900";
+  const buttonStyle =
+    "mt-5 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg border border-blue-900 px-4 py-2 text-sm font-semibold text-blue-900 transition-colors hover:bg-blue-900 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-900";
 
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
+  const navStyle =
+    "inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-md px-1 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-900 sm:px-3";
   return (
-    <>
-      <header className="border-b border-slate-200 bg-white px-6 py-5 md:px-10">
-        <div className="flex flex-wrap items-center justify-between gap-5">
+    <div className="w-full min-w-0 bg-white text-slate-900">
+      <header className="border-b border-slate-200 px-4 py-4 sm:px-6 md:px-10">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-xl font-bold tracking-tight text-blue-950 md:text-2xl">
               Berkshire Hathaway
@@ -30,80 +26,76 @@ const buttonStyle =
 
           <nav
             aria-label="Main navigation"
-            className="flex flex-wrap gap-5 text-sm font-medium text-slate-600"
+            className="flex w-full flex-nowrap items-center justify-between gap-1 overflow-x-auto lg:w-auto lg:gap-3"
           >
-            <button
-              type="button"
-              onClick={() => scrollToSection("reports")}
-              className="cursor-pointer hover:text-blue-900"
-            >
+            <a href="#reports" className={navStyle}>
               Reports
-            </button>
+            </a>
 
-            <button
-              type="button"
-              onClick={() => scrollToSection("shareholders")}
-              className="cursor-pointer hover:text-blue-900"
-            >
+            <a href="#shareholders" className={navStyle}>
               Shareholders
-            </button>
+            </a>
 
-            <button
-              type="button"
-              onClick={() => scrollToSection("company")}
-              className="cursor-pointer hover:text-blue-900"
-            >
+            <a href="#company" className={navStyle}>
               Company
-            </button>
+            </a>
 
-            <button
-              type="button"
-              onClick={() => scrollToSection("news")}
-              className="cursor-pointer hover:text-blue-900"
-            >
+            <a href="#news" className={navStyle}>
               News
-            </button>
+            </a>
           </nav>
         </div>
       </header>
 
       <main>
-        <section className="border-b-4 border-amber-300 bg-blue-950 px-6 py-10 md:px-10 md:py-14">
-          <div className="grid items-center gap-8 lg:grid-cols-3">
-            <div className="lg:col-span-2">
+        <section className="border-b-4 border-amber-300 bg-blue-950 px-4 py-8 sm:px-6 md:px-10 md:py-12">
+          <div className="grid items-center gap-8 lg:grid-cols-2">
+            <div className="mx-auto w-full max-w-xs overflow-hidden rounded-xl lg:order-2 lg:max-w-none">
+              <Image
+                src="/berkshire-logo.png"
+                alt="Berkshire Hathaway — Reports, Shareholders and Businesses"
+                width={1536}
+                height={1024}
+                sizes="(min-width: 1024px) 50vw, (min-width: 352px) 320px, calc(100vw - 32px)"
+                priority
+                className="h-auto w-full"
+              />
+            </div>
+
+            <div className="min-w-0 lg:order-1">
               <p className="text-sm font-semibold uppercase tracking-widest text-amber-200">
                 Berkshire Hathaway Inc.
               </p>
 
-              <h1 className="mt-4 text-3xl font-bold leading-tight text-white md:text-5xl">
-                A clearer view
+              <h1 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl xl:text-5xl">
+                Reports, letters &amp;
                 <br />
-                of Berkshire.
+                company information.
               </h1>
 
               <p className="mt-5 max-w-xl text-base leading-relaxed text-blue-100 md:text-lg">
-                Financial information, shareholder communications,
-                and company resources, brought together in one place.
+                Access financial reports, shareholder communications,
+                and information about Berkshire’s businesses.
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  className="cursor-pointer rounded-lg bg-amber-200 px-5 py-3 font-semibold text-blue-950 transition-colors hover:bg-amber-300"
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <a
+                  href="#reports"
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg bg-amber-200 px-5 py-3 font-semibold text-blue-950 transition-colors hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-200"
                 >
                   Explore reports
-                </button>
+                </a>
 
-                <button
-                  type="button"
-                  className="cursor-pointer rounded-lg border border-blue-700 px-5 py-3 font-medium text-white transition-colors hover:bg-blue-900"
+                <a
+                  href="#shareholders"
+                  className="inline-flex min-h-11 items-center justify-center rounded-lg border border-blue-400 px-5 py-3 font-medium text-white transition-colors hover:bg-blue-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 >
                   Shareholder resources
-                </button>
+                </a>
               </div>
             </div>
 
-            <aside className="rounded-xl border border-blue-700 bg-blue-900 p-6">
+            <aside className="rounded-xl border border-blue-700 bg-blue-900 p-5 lg:order-3 lg:col-span-2 md:p-6">
               <p className="text-xs font-semibold uppercase tracking-widest text-amber-200">
                 Featured message
               </p>
@@ -119,9 +111,10 @@ const buttonStyle =
 
               <button
                 type="button"
-                className="mt-5 cursor-pointer font-semibold text-amber-200 hover:underline"
+                className="mt-4 inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-md px-3 py-2 font-semibold text-amber-200 transition-colors hover:bg-blue-800 hover:text-amber-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-200"
               >
-                Read the message <span aria-hidden="true">→</span>
+                Read the message
+                <span aria-hidden="true">→</span>
               </button>
             </aside>
           </div>
@@ -129,7 +122,7 @@ const buttonStyle =
 
         <aside
           aria-labelledby="notice-heading"
-          className="border-b border-amber-200 bg-amber-50 px-6 py-5 md:px-10"
+          className="border-b border-amber-200 bg-amber-50 px-4 py-5 sm:px-6 md:px-10"
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="max-w-2xl">
@@ -148,19 +141,26 @@ const buttonStyle =
 
             <button
               type="button"
-              className="cursor-pointer text-sm font-semibold text-amber-950 underline underline-offset-4"
+              className="inline-flex min-h-11 cursor-pointer items-center rounded-md px-3 py-2 text-sm font-semibold text-amber-950 underline underline-offset-4 transition-colors hover:bg-amber-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-900"
             >
               Read notice (PDF)
             </button>
           </div>
         </aside>
 
-        <section id="reports" className="px-6 py-10 md:px-10">
+        <section
+          id="reports"
+          aria-labelledby="reports-heading"
+          className="scroll-mt-4 px-4 py-10 sm:px-6 md:px-10"
+        >
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-700">
             Financial information
           </p>
 
-          <h2 className="mt-2 text-2xl font-bold text-blue-950">
+          <h2
+            id="reports-heading"
+            className="mt-2 text-2xl font-bold text-blue-950"
+          >
             Reports &amp; investor resources
           </h2>
 
@@ -249,12 +249,19 @@ const buttonStyle =
           </div>
         </section>
 
-        <section id="shareholders" className="border-y border-slate-200 bg-slate-50 px-6 py-10 md:px-10">
+        <section
+          id="shareholders"
+          aria-labelledby="shareholders-heading"
+          className="scroll-mt-4 border-y border-slate-200 bg-slate-50 px-4 py-10 sm:px-6 md:px-10"
+        >
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-700">
             Shareholder communications
           </p>
 
-          <h2 className="mt-2 text-2xl font-bold text-blue-950">
+          <h2
+            id="shareholders-heading"
+            className="mt-2 text-2xl font-bold text-blue-950"
+          >
             Letters &amp; perspectives
           </h2>
 
@@ -329,17 +336,24 @@ const buttonStyle =
           </div>
         </section>
 
-        <section id="news" className="px-6 py-10 md:px-10">
+        <section
+          id="news"
+          aria-labelledby="news-heading"
+          className="scroll-mt-4 px-4 py-10 sm:px-6 md:px-10"
+        >
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-700">
             Updates &amp; events
           </p>
 
-          <h2 className="mt-2 text-2xl font-bold text-blue-950">
+          <h2
+            id="news-heading"
+            className="mt-2 text-2xl font-bold text-blue-950"
+          >
             News and shareholder meetings
           </h2>
 
           <div className="mt-6 grid gap-5 md:grid-cols-2">
-            <article className="rounded-xl border border-blue-200 bg-blue-50 p-6">
+            <article className="min-w-0 rounded-xl border border-blue-200 bg-blue-50 p-6">
               <h3 className="text-lg font-semibold text-blue-950">
                 Berkshire &amp; Buffett announcements
               </h3>
@@ -358,7 +372,7 @@ const buttonStyle =
               </button>
             </article>
 
-            <article className="rounded-xl border border-amber-200 bg-amber-50 p-6">
+            <article className="min-w-0 rounded-xl border border-amber-200 bg-amber-50 p-6">
               <h3 className="text-lg font-semibold text-blue-950">
                 Annual shareholder gathering
               </h3>
@@ -378,12 +392,19 @@ const buttonStyle =
           </div>
         </section>
 
-        <section id="company" className="border-y border-slate-200 bg-slate-50 px-6 py-10 md:px-10">
+        <section
+          id="company"
+          aria-labelledby="company-heading"
+          className="scroll-mt-4 border-y border-slate-200 bg-slate-50 px-4 py-10 sm:px-6 md:px-10"
+        >
           <p className="text-xs font-semibold uppercase tracking-widest text-blue-700">
             About Berkshire
           </p>
 
-          <h2 className="mt-2 text-2xl font-bold text-blue-950">
+          <h2
+            id="company-heading"
+            className="mt-2 text-2xl font-bold text-blue-950"
+          >
             Businesses &amp; responsibilities
           </h2>
 
@@ -434,10 +455,10 @@ const buttonStyle =
 
         <section
           aria-labelledby="geico-heading"
-          className="px-6 py-8 md:px-10"
+          className="px-4 py-8 sm:px-6 md:px-10"
         >
           <div className="flex flex-wrap items-center justify-between gap-6 rounded-xl border border-blue-200 bg-blue-50 p-6">
-            <div className="max-w-xl">
+            <div className="min-w-0 max-w-xl">
               <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
                 Subsidiary spotlight
               </p>
@@ -465,7 +486,7 @@ const buttonStyle =
 
             <button
               type="button"
-              className="cursor-pointer rounded-lg bg-blue-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-blue-800"
+              className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg bg-blue-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-900"
             >
               Explore GEICO
             </button>
@@ -473,7 +494,7 @@ const buttonStyle =
         </section>
       </main>
 
-      <footer className="bg-blue-950 px-6 py-8 text-white md:px-10">
+      <footer className="bg-blue-950 px-4 py-8 text-white sm:px-6 md:px-10">
         <div className="grid gap-8 md:grid-cols-2">
           <div>
             <p className="text-xl font-bold">
@@ -488,7 +509,7 @@ const buttonStyle =
           </div>
 
           <div>
-            <h2 className="font-semibold text-white">
+            <h2 className="font-semibold">
               Website correspondence
             </h2>
 
@@ -507,16 +528,17 @@ const buttonStyle =
 
           <button
             type="button"
-            className="cursor-pointer text-sm text-blue-100 hover:text-white hover:underline"
+            className="inline-flex min-h-11 cursor-pointer items-center rounded-md px-3 py-2 text-sm text-blue-100 transition-colors hover:bg-blue-900 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Legal information
           </button>
         </div>
 
         <p className="mt-4 text-xs leading-relaxed text-blue-200">
-          Unofficial UI redesign. Buttons are visual placeholders.
+          Unofficial UI redesign with a custom logo concept.
+          Section navigation works; other buttons are visual placeholders.
         </p>
       </footer>
-    </>
+    </div>
   );
 }
